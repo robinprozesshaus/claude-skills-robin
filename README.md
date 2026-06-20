@@ -17,6 +17,7 @@ Ein Skill ist eine Anleitung (`SKILL.md`), die Claude beibringt, wie es eine bes
 | `supabase-postgres-best-practices` | Postgres-Performance & Best Practices (Indizes, RLS, Locking, ...) |
 | `web-design-guidelines` | UI-Code gegen Web Interface Guidelines reviewen (Accessibility, UX) |
 | `writing-guidelines` | Docs/Prose auf Stil, Ton und Klarheit reviewen |
+| `gdpr-dsgvo-expert` | GDPR/DSGVO-Compliance-Tooling: Code-Scanner auf personenbezogene Daten, DPIA-Generator, DSAR-Tracker |
 | `n8n-agents` | n8n AI-Agent-Nodes richtig aufbauen |
 | `n8n-binary-and-data` | Umgang mit Dateien/Binärdaten in n8n |
 | `n8n-code-javascript` | JavaScript in n8n Code-Nodes |
@@ -36,6 +37,8 @@ Ein Skill ist eine Anleitung (`SKILL.md`), die Claude beibringt, wie es eine bes
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
 `web-design-guidelines` und `writing-guidelines` stammen aus [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) (MIT-Lizenz, siehe jeweilige `SOURCE.md`).
+
+`gdpr-dsgvo-expert` stammt aus [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) (MIT-Lizenz, siehe `SOURCE.md`).
 
 ## Details
 
