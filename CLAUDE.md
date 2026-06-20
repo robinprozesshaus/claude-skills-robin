@@ -69,6 +69,4 @@ Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifi
 
 ## Angebundene Projekte
 
-- [`stundn-middleware`](https://github.com/robinprozesshaus/stundn-middleware) — Referenzimplementierung, funktionierend getestet.
-
-Wenn ein neues Projekt angebunden wird, hier ergänzen.
+Dieses Repo wird projektübergreifend genutzt. Konkrete Projektnamen werden hier bewusst nicht aufgeführt, da das Repo öffentlich ist.
