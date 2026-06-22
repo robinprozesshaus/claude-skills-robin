@@ -33,12 +33,18 @@ Ein Skill ist eine Anleitung (`SKILL.md`), die Claude beibringt, wie es eine bes
 | `n8n-validation-expert` | n8n-Validierungsfehler verstehen und beheben |
 | `n8n-workflow-patterns` | Erprobte Architektur-Patterns für n8n-Workflows |
 | `using-n8n-mcp-skills` | Einstiegspunkt/Router für die n8n-mcp-Skills |
+| `copywriting` | Marketing-Copy für Landing-/Pricing-/Feature-Pages schreiben und verbessern |
+| `brandkit` | Premium Brand-Kit-Bilder generieren (Brand-Guidelines, Logo-Systeme, Identity-Decks) |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
 `web-design-guidelines` und `writing-guidelines` stammen aus [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) (MIT-Lizenz, siehe jeweilige `SOURCE.md`).
 
 `gdpr-dsgvo-expert` stammt aus [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) (MIT-Lizenz, siehe `SOURCE.md`).
+
+`copywriting` stammt aus [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills).
+
+`brandkit` stammt aus [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill).
 
 ## Details
 
