@@ -10,6 +10,7 @@ Jedes beliebige andere Repo kann sich anbinden und bekommt die hier gepflegten S
 - Skills, die in mehreren Projekten nützlich sind, werden hier **einmal** gepflegt statt in jedem Repo dupliziert.
 - Änderungen/Erweiterungen an einem Skill wirken sich automatisch auf alle angebundenen Projekte aus (beim nächsten Session-Start wird neu synchronisiert).
 - Das Repo ist bewusst minimal gehalten: nur Skill-Ordner + die zwei Dateien, die den Sync-Mechanismus implementieren (`.claude/settings.json`, `.claude/hooks/session-start.sh`), dienen als Referenz für Konsumenten-Repos.
+- Zusätzlich zu den eigenen Skills werden kuratierte Skills aus Fremd-Repos unter `vendor/<quelle>/` eingebunden (aktuell `vendor/mattpocock/`, MIT). Siehe Abschnitt „Fremd-Skills (vendored)".
 
 ## Neue Skills hinzufügen
 
@@ -40,22 +41,52 @@ Hinweise:
 - Ordnername = Skill-Name, wird 1:1 nach `~/.claude/skills/<skill-name>` kopiert.
 - Keine Secrets oder projektspezifischen Pfade/Tokens in Skills hinterlegen — das Repo ist **public**.
 - Ein Skill kann zusätzliche Dateien (Scripts, Templates) im selben Ordner enthalten.
+- Der Hook findet Skills **rekursiv** über die enthaltene `SKILL.md` — eigene Skills liegen weiterhin top-level, vendored Skills dürfen beliebig tief unter `vendor/…` verschachtelt sein.
 
 ## Wie der Sync-Mechanismus funktioniert
 
 Jedes Konsumenten-Repo, das diese Skills automatisch nutzen will, braucht genau zwei Dateien (siehe `.claude/settings.json` und `.claude/hooks/session-start.sh` in diesem Repo als Vorlage):
 
 1. **`.claude/settings.json`** registriert einen `SessionStart`-Hook, der bei jedem Sessionstart `session-start.sh` ausführt.
-2. **`.claude/hooks/session-start.sh`** klont/aktualisiert `claude-skills-robin` in einen Cache-Ordner (`~/.cache/claude-skills-src`) und kopiert jeden Top-Level-Skill-Ordner nach `~/.claude/skills`. Bereits vorhandene, plattformseitig bereitgestellte Skills (z. B. `session-start-hook`) werden dabei **nicht** gelöscht, sondern nur ergänzt/überschrieben. Der Hook schlägt nie fehl — Fehler beim Klonen/Pullen werden geloggt, der Sessionstart läuft trotzdem weiter.
+2. **`.claude/hooks/session-start.sh`** klont/aktualisiert `claude-skills-robin` in einen Cache-Ordner (`~/.cache/claude-skills-src`) und kopiert jeden Skill-Ordner (jeder Ordner mit einer `SKILL.md`, **rekursiv** gefunden) nach `~/.claude/skills`. Bereits vorhandene, plattformseitig bereitgestellte Skills (z. B. `session-start-hook`) werden dabei **nicht** gelöscht, sondern nur ergänzt/überschrieben. Der Hook schlägt nie fehl — Fehler beim Klonen/Pullen werden geloggt, der Sessionstart läuft trotzdem weiter.
 
 Ablauf bei jedem Sessionstart im Konsumenten-Repo:
 
 ```
 SessionStart-Hook
   → git clone/pull robinprozesshaus/claude-skills-robin (main) nach ~/.cache/claude-skills-src
-  → cp -a <jeder Top-Level-Ordner außer .git/.claude> nach ~/.claude/skills/
+  → find <repo> -name SKILL.md  →  cp -a <jeder gefundene Skill-Ordner> nach ~/.claude/skills/
   → Skills sind sofort nutzbar, kein manueller Schritt nötig
 ```
+
+Weil rekursiv nach `SKILL.md` gesucht wird, ist es egal, ob ein Skill top-level liegt (eigene Skills) oder tief unter `vendor/…` (Fremd-Skills). Als Skill-Name zählt immer der **Ordnername** der `SKILL.md`.
+
+## Fremd-Skills (vendored)
+
+Kuratierte Skills aus Fremd-Repos liegen unter `vendor/<quelle>/` und werden vom
+selben rekursiven Hook mitgesynct — Konsumenten-Repos müssen dafür **nichts**
+ändern.
+
+Aktuell eingebunden:
+
+- **`vendor/mattpocock/`** — kuratierter Subset von
+  [`mattpocock/skills`](https://github.com/mattpocock/skills) (MIT).
+  Enthalten: Kategorien `engineering`, `productivity`, `misc`.
+  Bewusst **ausgeschlossen**: `in-progress`, `deprecated`, `personal`.
+
+Regeln:
+
+- **Nicht von Hand editieren.** Der Ordner `vendor/mattpocock/skills/` wird per
+  Skript neu erzeugt. Änderungen dort gehen beim nächsten Sync verloren.
+- **Updaten / Umfang ändern:** `./scripts/sync-mattpocock.sh` ausführen. Kategorien
+  und Kollisions-Renames stehen als Variablen oben im Skript (`CATEGORIES`,
+  `RENAMES`).
+- **Namenskollisionen:** Skills, deren Name mit einem Plattform-Builtin kollidiert,
+  werden umbenannt, damit sie es nicht überschreiben. Beispiel:
+  `code-review` → `matt-code-review`.
+- **Lizenz/Attribution:** Die MIT-Lizenz des Upstreams liegt unter
+  `vendor/mattpocock/LICENSE`, Herkunft/Commit unter
+  `vendor/mattpocock/PROVENANCE.md`.
 
 ## Ein neues Repo anbinden
 
