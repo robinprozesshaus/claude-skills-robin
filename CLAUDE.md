@@ -9,7 +9,7 @@ Jedes beliebige andere Repo kann sich anbinden und bekommt die hier gepflegten S
 
 - Skills, die in mehreren Projekten nützlich sind, werden hier **einmal** gepflegt statt in jedem Repo dupliziert.
 - Änderungen/Erweiterungen an einem Skill wirken sich automatisch auf alle angebundenen Projekte aus (beim nächsten Session-Start wird neu synchronisiert).
-- Das Repo ist bewusst minimal gehalten: nur Skill-Ordner + die zwei Dateien, die den Sync-Mechanismus implementieren (`.claude/settings.json`, `.claude/hooks/session-start.sh`), dienen als Referenz für Konsumenten-Repos.
+- Das Repo ist bewusst minimal gehalten: nur Skill-Ordner + `.claude/settings.json`/`.claude/hooks/session-start.sh` (Self-Mirror-Sync für dieses Repo selbst) + `templates/consumer/` (die Vorlage für Konsumenten-Repos).
 - Zusätzlich zu den eigenen Skills werden kuratierte Skills aus Fremd-Repos unter `vendor/<quelle>/` eingebunden (aktuell `vendor/mattpocock/`, MIT). Siehe Abschnitt „Fremd-Skills (vendored)".
 
 ## Neue Skills hinzufügen
@@ -45,7 +45,7 @@ Hinweise:
 
 ## Wie der Sync-Mechanismus funktioniert
 
-Jedes Konsumenten-Repo, das diese Skills automatisch nutzen will, braucht genau zwei Dateien (siehe `.claude/settings.json` und `.claude/hooks/session-start.sh` in diesem Repo als Vorlage):
+Jedes Konsumenten-Repo, das diese Skills automatisch nutzen will, braucht genau zwei Dateien (siehe `templates/consumer/.claude/settings.json` und `templates/consumer/.claude/hooks/session-start.sh` in diesem Repo als Vorlage):
 
 1. **`.claude/settings.json`** registriert einen `SessionStart`-Hook, der bei jedem Sessionstart `session-start.sh` ausführt.
 2. **`.claude/hooks/session-start.sh`** klont/aktualisiert `claude-skills-robin` in einen Cache-Ordner (`~/.cache/claude-skills-src`) und kopiert jeden Skill-Ordner (jeder Ordner mit einer `SKILL.md`, **rekursiv** gefunden) nach `~/.claude/skills`. Bereits vorhandene, plattformseitig bereitgestellte Skills (z. B. `session-start-hook`) werden dabei **nicht** gelöscht, sondern nur ergänzt/überschrieben. Der Hook schlägt nie fehl — Fehler beim Klonen/Pullen werden geloggt, der Sessionstart läuft trotzdem weiter.
@@ -92,9 +92,11 @@ Regeln:
 
 Um die Skills aus diesem Repo in einem beliebigen anderen Projekt verfügbar zu machen:
 
-1. Kopiere `.claude/settings.json` und `.claude/hooks/session-start.sh` 1:1 aus diesem Repo in das Ziel-Repo (gleiche Pfade).
+1. Kopiere `templates/consumer/.claude/settings.json` und `templates/consumer/.claude/hooks/session-start.sh` aus diesem Repo in das Ziel-Repo (Ziel-Pfade: `.claude/settings.json`, `.claude/hooks/session-start.sh`).
 2. Stelle sicher, dass `session-start.sh` ausführbar ist (`chmod +x`).
 3. Fertig — kein Token, kein API-Key, keine weitere Konfiguration nötig.
+
+**Wichtig:** Verwende dafür **nicht** die Datei `.claude/hooks/session-start.sh` im Root dieses Repos — die ist ausschließlich für `claude-skills-robin` selbst gedacht. Sie mirrored via `CLAUDE_PROJECT_DIR` ihr eigenes Arbeitsverzeichnis, statt einen geklonten Checkout zu syncen. In ein fremdes Repo kopiert würde `SRC` auf das Ziel-Repo selbst zeigen (das keine `SKILL.md`-Dateien enthält) — der Sync bliebe für immer leer. Die Vorlage unter `templates/consumer/` klont/pullt `claude-skills-robin` stattdessen in einen lokalen Cache-Ordner und synct rekursiv von dort.
 
 Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifizierung geklont werden. Schreibzugriff auf dieses Repo bleibt exklusiv beim Owner; Konsumenten-Repos lesen nur.
 
