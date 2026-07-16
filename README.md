@@ -35,6 +35,7 @@ Ein Skill ist eine Anleitung (`SKILL.md`), die Claude beibringt, wie es eine bes
 | `using-n8n-mcp-skills` | Einstiegspunkt/Router für die n8n-mcp-Skills |
 | `copywriting` | Marketing-Copy für Landing-/Pricing-/Feature-Pages schreiben und verbessern |
 | `brandkit` | Premium Brand-Kit-Bilder generieren (Brand-Guidelines, Logo-Systeme, Identity-Decks) |
+| `vendor/mattpocock/*` | 26 Engineering-/Productivity-Skills von Matt Pocock: `tdd`, `matt-code-review`, `diagnosing-bugs`, `implement`, `research`, `domain-modeling`, `triage`, `handoff`, `grilling`, `teach` u. a. |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
@@ -45,6 +46,8 @@ Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlon
 `copywriting` stammt aus [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills).
 
 `brandkit` stammt aus [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill).
+
+Die Skills unter `vendor/mattpocock/` stammen aus [mattpocock/skills](https://github.com/mattpocock/skills) (MIT-Lizenz, siehe `vendor/mattpocock/LICENSE` und `vendor/mattpocock/PROVENANCE.md`). Anders als die übrigen Fremd-Skills sind sie nicht flach ins Repo-Root kopiert, sondern kuratiert unter `vendor/mattpocock/` gruppiert (Kategorien `engineering`, `productivity`, `misc`; ausgeschlossen: `in-progress`, `deprecated`, `personal`). Der Session-Hook findet sie trotzdem automatisch, weil er rekursiv nach `SKILL.md` sucht. Update/Umfang ändern: `./scripts/sync-mattpocock.sh`.
 
 ## Details
 
