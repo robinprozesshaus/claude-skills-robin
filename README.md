@@ -8,6 +8,18 @@ Ein Skill ist eine Anleitung (`SKILL.md`), die Claude beibringt, wie es eine bes
 
 Ändert sich ein Skill hier, steht die Aktualisierung beim nächsten Sessionstart in allen angebundenen Projekten zur Verfügung — ganz ohne manuellen Sync.
 
+## Ein neues Repo anbinden
+
+Um diese Skills automatisch in einem beliebigen anderen Projekt verfügbar zu machen:
+
+1. Kopiere `templates/consumer/.claude/settings.json` und `templates/consumer/.claude/hooks/session-start.sh` aus diesem Repo in das Ziel-Repo (Ziel-Pfade: `.claude/settings.json`, `.claude/hooks/session-start.sh`).
+2. Stelle sicher, dass `session-start.sh` ausführbar ist (`chmod +x`).
+3. Fertig — kein Token, kein API-Key, keine weitere Konfiguration nötig. Beim nächsten Sessionstart im Ziel-Repo klont/pullt der Hook `claude-skills-robin` in einen lokalen Cache und synct alle Skills nach `~/.claude/skills`.
+
+**Wichtig:** Nicht die Root-Datei `.claude/hooks/session-start.sh` *dieses* Repos kopieren — die ist ausschließlich für `claude-skills-robin` selbst gedacht (spiegelt nur das eigene Arbeitsverzeichnis) und synct in einem fremden Repo nichts. Details siehe [`templates/consumer/README.md`](./templates/consumer/README.md) bzw. [`CLAUDE.md`](./CLAUDE.md).
+
+Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifizierung geklont werden — kein Token, kein Secret nötig. Schreibzugriff bleibt exklusiv beim Owner.
+
 ## Enthaltene Skills
 
 | Skill | Wofür |
