@@ -48,6 +48,8 @@ Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifi
 | `copywriting` | Marketing-Copy für Landing-/Pricing-/Feature-Pages schreiben und verbessern |
 | `brandkit` | Premium Brand-Kit-Bilder generieren (Brand-Guidelines, Logo-Systeme, Identity-Decks) |
 | `vendor/mattpocock/*` | 26 Engineering-/Productivity-Skills von Matt Pocock: `tdd`, `matt-code-review`, `diagnosing-bugs`, `implement`, `research`, `domain-modeling`, `triage`, `handoff`, `grilling`, `teach` u. a. |
+| `vendor/coreyhaines/skills/content-strategy` | Content-/Themenplanung: Content-Pillars, Keyword-Recherche nach Buyer-Stage, Redaktionskalender |
+| `vendor/coreyhaines/skills/social` | Social-Media-Content erstellen/optimieren: Hooks, LinkedIn-Karussell-Frameworks, Repurposing, Posting-Kalender |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
@@ -56,6 +58,8 @@ Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlon
 `gdpr-dsgvo-expert` stammt aus [alirezarezvani/claude-skills](https://github.com/alirezarezvani/claude-skills) (MIT-Lizenz, siehe `SOURCE.md`).
 
 `copywriting` stammt aus [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills).
+
+Die Skills unter `vendor/coreyhaines/` stammen ebenfalls aus [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (MIT-Lizenz, siehe `vendor/coreyhaines/LICENSE` und `vendor/coreyhaines/PROVENANCE.md`), aber gruppiert statt flach kopiert, analog zu `vendor/mattpocock/`. Bewusst nur zwei Skills aus dem Upstream-Repo übernommen (`content-strategy`, `social`), nicht der komplette Katalog, siehe `PROVENANCE.md` für die Begründung.
 
 `brandkit` stammt aus [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill).
 
