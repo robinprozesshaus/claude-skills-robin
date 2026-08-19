@@ -50,7 +50,16 @@ Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifi
 | `vendor/mattpocock/*` | 26 Engineering-/Productivity-Skills von Matt Pocock: `tdd`, `matt-code-review`, `diagnosing-bugs`, `implement`, `research`, `domain-modeling`, `triage`, `handoff`, `grilling`, `teach` u. a. |
 | `vendor/coreyhaines/skills/content-strategy` | Content-/Themenplanung: Content-Pillars, Keyword-Recherche nach Buyer-Stage, Redaktionskalender |
 | `vendor/coreyhaines/skills/social` | Social-Media-Content erstellen/optimieren: Hooks, LinkedIn-Karussell-Frameworks, Repurposing, Posting-Kalender |
+| `vendor/coreyhaines/skills/ads` | Paid-Advertising-Kampagnen (Google/Meta/LinkedIn/Twitter Ads, PPC, ROAS) |
+| `vendor/coreyhaines/skills/cro` | Conversion-Rate-Optimierung für Landingpages/Formulare |
+| `vendor/coreyhaines/skills/emails` | E-Mail-Sequenzen, Drip-Campaigns, Lifecycle-E-Mails |
+| `vendor/coreyhaines/skills/launch` | Produkt-Launches, Feature-Announcements, Go-to-Market |
+| `vendor/coreyhaines/skills/pricing` | Pricing-Entscheidungen, Paketierung, Monetarisierung |
+| `vendor/coreyhaines/skills/marketing-psychology` | Psychologische Prinzipien/Cognitive Bias in Marketing anwenden |
+| `vendor/coreyhaines/skills/seo-audit` | SEO-Audits, technisches SEO, Ranking-Probleme diagnostizieren |
+| `vendor/coreyhaines/skills/offers` | Angebote konstruieren: Value-Framing, Bonus-Stacking, Guarantees, Scarcity |
 | `vendor/login-tb/skills/vermenschlichen` | Schreibregeln für deutsche Texte, die nicht nach KI klingen (Werbesprache, Floskeln, Gedankenstrich-Häufung, erfundene Belege u. a. vermeiden) |
+| `vendor/cloudflare/skills/security-audit` | Sechsphasige Security-Audit-Pipeline für Codebases (Recon, Hunt, Validate, Report, strukturierter JSON-Output, unabhängige Verifikation) |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
@@ -67,6 +76,8 @@ Die Skills unter `vendor/coreyhaines/` stammen ebenfalls aus [coreyhaines31/mark
 Die Skills unter `vendor/mattpocock/` stammen aus [mattpocock/skills](https://github.com/mattpocock/skills) (MIT-Lizenz, siehe `vendor/mattpocock/LICENSE` und `vendor/mattpocock/PROVENANCE.md`). Anders als die übrigen Fremd-Skills sind sie nicht flach ins Repo-Root kopiert, sondern kuratiert unter `vendor/mattpocock/` gruppiert (Kategorien `engineering`, `productivity`, `misc`; ausgeschlossen: `in-progress`, `deprecated`, `personal`). Der Session-Hook findet sie trotzdem automatisch, weil er rekursiv nach `SKILL.md` sucht. Update/Umfang ändern: `./scripts/sync-mattpocock.sh`.
 
 Der Skill unter `vendor/login-tb/skills/vermenschlichen` stammt aus [LOGIN-TB/claude-skills](https://github.com/LOGIN-TB/claude-skills) (MIT-Lizenz, siehe `vendor/login-tb/LICENSE` und `vendor/login-tb/PROVENANCE.md`), gruppiert analog zu `vendor/coreyhaines/`. Kein Sync-Skript, da das Upstream-Repo aktuell nur diesen einen Skill enthält.
+
+Der Skill unter `vendor/cloudflare/skills/security-audit` stammt aus [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) (MIT-Lizenz, siehe `vendor/cloudflare/LICENSE` und `vendor/cloudflare/PROVENANCE.md`).
 
 ## Details
 
