@@ -60,6 +60,14 @@ Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifi
 | `vendor/coreyhaines/skills/offers` | Angebote konstruieren: Value-Framing, Bonus-Stacking, Guarantees, Scarcity |
 | `vendor/login-tb/skills/vermenschlichen` | Schreibregeln für deutsche Texte, die nicht nach KI klingen (Werbesprache, Floskeln, Gedankenstrich-Häufung, erfundene Belege u. a. vermeiden) |
 | `vendor/cloudflare/skills/security-audit` | Sechsphasige Security-Audit-Pipeline für Codebases (Recon, Hunt, Validate, Report, strukturierter JSON-Output, unabhängige Verifikation) |
+| `vendor/ponytail/skills/ponytail` | Erzwingt die schlankste funktionierende Lösung (YAGNI, Stdlib vor Dependency, native Plattform-Features vor Custom-Code); Intensitätsstufen lite/full/ultra |
+| `vendor/ponytail/skills/ponytail-review` | Code-Review nur auf Over-Engineering: was gelöscht werden kann (unnötige Deps, spekulative Abstraktionen) |
+| `vendor/ponytail/skills/ponytail-audit` | Ganzes Repo statt Diff auf Over-Engineering scannen, priorisierte Lösch-/Vereinfachungsliste |
+| `vendor/ponytail/skills/ponytail-help` | Kurzreferenz aller ponytail-Modi/-Skills/-Commands |
+| `vendor/ponytail/skills/ponytail-debt` | Sammelt `ponytail:`-Kommentare (bewusste Abkürzungen) im Code zu einem Debt-Ledger |
+| `vendor/ponytail/skills/ponytail-gain` | Zeigt ponytails gemessenen Impact (Code-/Kosten-/Zeitersparnis) als Scoreboard |
+| `vendor/graphify/skills/graphify` | Beliebigen Ordner (Code, Docs, Papers, Bilder, Videos) in einen abfragbaren Knowledge-Graph verwandeln; Query/Path/Explain-Tools, Community-Detection |
+| `vendor/omniroute/skills/*` | 45 Skills zur OmniRoute-API/-CLI (LLM-Proxy/-Router): Provider-Routing & Fallback-Ketten (u. a. für Modell-/Anbieterwechsel bei Tokenlimit), Auth, API-Keys, Budget/Rate-Limits, Caching, Kompression, Webhooks, MCP u. a. |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
@@ -78,6 +86,12 @@ Die Skills unter `vendor/mattpocock/` stammen aus [mattpocock/skills](https://gi
 Der Skill unter `vendor/login-tb/skills/vermenschlichen` stammt aus [LOGIN-TB/claude-skills](https://github.com/LOGIN-TB/claude-skills) (MIT-Lizenz, siehe `vendor/login-tb/LICENSE` und `vendor/login-tb/PROVENANCE.md`), gruppiert analog zu `vendor/coreyhaines/`. Kein Sync-Skript, da das Upstream-Repo aktuell nur diesen einen Skill enthält.
 
 Der Skill unter `vendor/cloudflare/skills/security-audit` stammt aus [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) (MIT-Lizenz, siehe `vendor/cloudflare/LICENSE` und `vendor/cloudflare/PROVENANCE.md`).
+
+Die Skills unter `vendor/ponytail/` stammen aus [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (MIT-Lizenz, siehe `vendor/ponytail/LICENSE` und `vendor/ponytail/PROVENANCE.md`), alle 6 Skills des Upstream-Repos vollständig übernommen.
+
+Der Skill unter `vendor/graphify/skills/graphify` stammt aus [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) (Apache-2.0-Lizenz, siehe `vendor/graphify/LICENSE`, `vendor/graphify/NOTICE` und `vendor/graphify/PROVENANCE.md`). Installiert bei Bedarf selbstständig das PyPI-Paket `graphifyy`.
+
+Die Skills unter `vendor/omniroute/` stammen aus [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) (MIT-Lizenz, siehe `vendor/omniroute/LICENSE` und `vendor/omniroute/PROVENANCE.md`) — reine API-Referenz-Anleitungen (curl-Beispiele, Endpoints), keine Credentials enthalten. Der im Upstream `skills/`-Ordner enthaltene Duplikat-Skill `ponytail` wird nicht übernommen, da bereits eigenständig unter `vendor/ponytail/` vendored. Update: `./scripts/sync-omniroute.sh`. Echte API-Keys (`OMNIROUTE_KEY`) gehören nie in dieses Repo, sondern in lokale Env-Variablen/Secret-Manager der jeweiligen Session.
 
 ## Details
 
