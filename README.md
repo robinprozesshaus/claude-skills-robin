@@ -67,7 +67,6 @@ Da `claude-skills-robin` ein **öffentliches** Repo ist, kann es ohne Authentifi
 | `vendor/ponytail/skills/ponytail-debt` | Sammelt `ponytail:`-Kommentare (bewusste Abkürzungen) im Code zu einem Debt-Ledger |
 | `vendor/ponytail/skills/ponytail-gain` | Zeigt ponytails gemessenen Impact (Code-/Kosten-/Zeitersparnis) als Scoreboard |
 | `vendor/graphify/skills/graphify` | Beliebigen Ordner (Code, Docs, Papers, Bilder, Videos) in einen abfragbaren Knowledge-Graph verwandeln; Query/Path/Explain-Tools, Community-Detection |
-| `vendor/omniroute/skills/*` | 45 Skills zur OmniRoute-API/-CLI (LLM-Proxy/-Router): Provider-Routing & Fallback-Ketten (u. a. für Modell-/Anbieterwechsel bei Tokenlimit), Auth, API-Keys, Budget/Rate-Limits, Caching, Kompression, Webhooks, MCP u. a. |
 
 Die `n8n-*`-Skills stammen aus [czlonkowski/n8n-skills](https://github.com/czlonkowski/n8n-skills) (MIT-Lizenz, siehe jeweilige `LICENSE`/`SOURCE.md`) und sind hier hinterlegt, weil bereits eine n8n-mcp-Anbindung im Einsatz ist.
 
@@ -90,8 +89,6 @@ Der Skill unter `vendor/cloudflare/skills/security-audit` stammt aus [cloudflare
 Die Skills unter `vendor/ponytail/` stammen aus [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (MIT-Lizenz, siehe `vendor/ponytail/LICENSE` und `vendor/ponytail/PROVENANCE.md`), alle 6 Skills des Upstream-Repos vollständig übernommen.
 
 Der Skill unter `vendor/graphify/skills/graphify` stammt aus [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) (Apache-2.0-Lizenz, siehe `vendor/graphify/LICENSE`, `vendor/graphify/NOTICE` und `vendor/graphify/PROVENANCE.md`). Installiert bei Bedarf selbstständig das PyPI-Paket `graphifyy`.
-
-Die Skills unter `vendor/omniroute/` stammen aus [diegosouzapw/OmniRoute](https://github.com/diegosouzapw/OmniRoute) (MIT-Lizenz, siehe `vendor/omniroute/LICENSE` und `vendor/omniroute/PROVENANCE.md`) — reine API-Referenz-Anleitungen (curl-Beispiele, Endpoints), keine Credentials enthalten. Der im Upstream `skills/`-Ordner enthaltene Duplikat-Skill `ponytail` wird nicht übernommen, da bereits eigenständig unter `vendor/ponytail/` vendored. Update: `./scripts/sync-omniroute.sh`. Echte API-Keys (`OMNIROUTE_KEY`) gehören nie in dieses Repo, sondern in lokale Env-Variablen/Secret-Manager der jeweiligen Session.
 
 ## Details
 
